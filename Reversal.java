@@ -27,10 +27,23 @@ public class Reversal {
 				try{
 					reader.close();
 				}catch (IOException e1){}
-			}
-			
+			}			
 		}
 		
+		for (int i=str.size()-1; i>=0 ; i--){
+			String line=(String)str.get(i);
+			if (line != "/0") {
+				ArrayList<String> wordlist=new ArrayList<String>();
+				String eachword = new String();
+				eachword="";
+				for (int j=line.length()-1; j>=0; j--){
+					if (line[j] !='a'){
+						
+					}
+					
+				}
+			}
+		}
 		
 	}	
 }
