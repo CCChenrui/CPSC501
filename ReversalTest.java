@@ -1,52 +1,162 @@
 //Author : Chenrui Hu
-<<<<<<< HEAD
+
 import static org.junit.Assert.*;
 import java.io.*;
 import java.util.Scanner;
-import org.junit.*;
-import org.junit.rules.TemporaryFolder;
+import org.junit.Test;
 
-// there will be 4 different cases in ReversalTest
+// there will be 4 different kinds of cases in ReversalTest
+// normal lines
+// short lines, empty lines and long lines
+// long lines, empty lines and short lines
+// empty lines, normal lines, empty lines, normal lines and empty lines
+
+
 public class ReversalTest {
-	@Rule public TemporaryFolder folder = new TemporaryFolder();
-	
-	//@BeforeClass //Open the File
-	
-	//@AfterClass //Close the File
-=======
-import java.io.*;
-import org.junit.*;
-
-// there will be 4 different cases in ReversalTest
-public class ReversalTest {
-
-	@BeforeClass //Open the File
-	
-	@AfterClass //Close the File
->>>>>>> 05e9e30162f201986ce9b6ca936d9206d2d062a8
-	
-	
-	@Test
-	public void test() {
-<<<<<<< HEAD
-		try{
-			File Inputfile = folder.newFile("TestCase1Input.txt");
-			File Outputfile = folder.newFile("TestCase1Output.txt");
+	@Test // example, normal lines
+	public void testexample() throws IOException {
+		
+			File Inputfile  = new File("TestCaseInput.txt");
+			File Outputfile = new File("TestCaseOutput.txt");
 			
+			PrintWriter writer = new PrintWriter(Inputfile);		
+			writer.println("Lorem ipsum dolor sit amet,");
+			writer.println("consectetur adipiscing elit.");
+			writer.close();
+						
 			Reversal.reverseFile(Inputfile, Outputfile);
-			
+						
 			Scanner scan = new Scanner(Outputfile);
 
-			int line=0;
+		    String Expected="elit. adipiscing consectetur";
+		    String Actual = scan.nextLine();		    		    
+		    assertEquals("",Expected,Actual);
+		    
+		    Expected="amet, sit dolor ipsum Lorem";
+		    Actual = scan.nextLine();		    		    
+		    assertEquals("",Expected,Actual);
+		    
+		   
+		    scan.close();
+	}
+	
+	
+	@Test //normal lines case
+	public void test1() throws IOException {
+		
+			File Inputfile  = new File("TestCaseInput.txt");
+			File Outputfile = new File("TestCaseOutput.txt");
 			
+			PrintWriter writer = new PrintWriter(Inputfile);		
+			writer.println("My name is Chenrui.");
+			writer.println("This is my testcase.");
+			writer.close();
+						
+			Reversal.reverseFile(Inputfile, Outputfile);
+						
+			Scanner scan = new Scanner(Outputfile);
+
+		    String Expected= "testcase. my is This";			
+		    String Actual = scan.nextLine();		    		    
+		    assertEquals("",Expected,Actual);
+		    
+		    Expected= "Chenrui. is name My";			
+		    Actual = scan.nextLine();	    		    
+		    assertEquals("",Expected,Actual);
+		    
+		    scan.close();
+	}
+	
+	@Test  // empty lines, normal lines, empty lines, normal lines and empty lines
+	public void test2() throws IOException {
+
+			File Inputfile  = new File("TestCaseInput.txt");
+			File Outputfile = new File("TestCaseOutput.txt");
 			
-		} catch (IOException e){
-			fail("No exception should be thrown");
-		}
-=======
-		File actual =  
->>>>>>> 05e9e30162f201986ce9b6ca936d9206d2d062a8
+			PrintWriter writer = new PrintWriter(Inputfile);		
+			writer.println("");
+			writer.println("This will be a long line, and my name is Chenrui Hu.");
+			writer.println("");
+			writer.println("This is a short line.");
+			writer.println("");
+			writer.close();
+						
+			Reversal.reverseFile(Inputfile, Outputfile);
+						
+			Scanner scan = new Scanner(Outputfile);
+
+		    String Expected="line. short a is This";
+		    String Actual = scan.nextLine();		    		    
+		    assertEquals("",Expected,Actual);
+		    
+		    Expected="Hu. Chenrui is name my and line, long a be will This";
+		    Actual = scan.nextLine();		    		    
+		    assertEquals("",Expected,Actual);
+		    
+		   
+		    scan.close();
+
 	}
 
+	@SuppressWarnings("resource")
+	@Test  //short lines, empty lines and long lines
+	public void test3() throws IOException {
+		
+
+			File Inputfile  = new File("TestCaseInput.txt");
+			File Outputfile = new File("TestCaseOutput.txt");
+			
+			PrintWriter writer = new PrintWriter(Inputfile);		
+			writer.println("My name is Chenrui.");
+			writer.println("");
+			writer.println("This is my another testcase, I want to make it becomes long.");
+			writer.close();
+						
+			Reversal.reverseFile(Inputfile, Outputfile);
+						
+			Scanner scan = new Scanner(Outputfile);
+
+		    String Expected= "long. becomes it make to want I testcase, another my is This";			
+		    String Actual = scan.nextLine();		    		    
+		    assertEquals("",Expected,Actual);
+		    
+		    
+		    
+		    Expected= "Chenrui. is name My";			
+		    Actual = scan.nextLine();	    		    
+		    assertEquals("",Expected,Actual);
+		    
+
+	}
 	
+	
+	@Test // long lines, empty lines and short lines
+	public void test4() throws IOException {
+		
+
+			File Inputfile  = new File("TestCaseInput.txt");
+			File Outputfile = new File("TestCaseOutput.txt");
+			
+			PrintWriter writer = new PrintWriter(Inputfile);		
+			writer.println("This will be a long line, and my name is Chenrui Hu.");
+			writer.println("");
+			writer.println("This is a short line.");
+			writer.close();
+						
+			Reversal.reverseFile(Inputfile, Outputfile);
+						
+			Scanner scan = new Scanner(Outputfile);
+
+		    String Expected="line. short a is This";
+		    String Actual = scan.nextLine();		    		    
+		    assertEquals("",Expected,Actual);
+		    
+		    Expected="Hu. Chenrui is name my and line, long a be will This";
+		    Actual = scan.nextLine();		    		    
+		    assertEquals("",Expected,Actual);
+		    
+		   
+		    scan.close();
+
+	}	
 }
