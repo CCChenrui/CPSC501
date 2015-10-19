@@ -64,7 +64,7 @@ public class Reversal {
 			fos = new FileOutputStream(output);
 			writer = new BufferedWriter(new OutputStreamWriter(fos));
 			try{				
-				for (int j = wordlist.size()-2; j>=0 ; j--){
+				for (int j = 0; j<=wordlist.size()-2 ; j++){
 					String wordstr=(String)wordlist.get(j);
 					char word[] = wordstr.toCharArray();
 					//output every words in reverse to make word order back normal
@@ -81,7 +81,7 @@ public class Reversal {
 				}
 				// switch lines after output one line
 				writer.write("\r\n");
-				
+				writer.close();
 			}catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
