@@ -2,32 +2,30 @@
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Reversal {
 	public static void reverseFile(File input, File output) throws FileNotFoundException{
 		ArrayList<String> str=new ArrayList<String>();		
-		BufferedReader reader = null;
+		Scanner reader ;
+		reader = new Scanner (input);
 		
 		// Open File and input strings
 		try{
-			reader = new BufferedReader (new FileReader(input));
+			
 			String tempString = null;
 			
-			while ((tempString = reader.readLine()) != null ){
-				// using ArrayList to save the inputs strings
+			while (reader.hasNext()){
+				// using ArrayList to save the inputs strings	
+				tempString = reader.nextLine();
 				str.add(tempString);
+				
 			}
 			
-			reader.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//reader.close();
 		} finally{		
-			if (reader != null ) {
-				try{
-					reader.close();
-				}catch (IOException e1){}
-			}			
+				reader.close();
+						
 		}
 	
 		// Change the input strings
@@ -87,9 +85,7 @@ public class Reversal {
 				e.printStackTrace();
 			}finally{		
 				if (reader != null ) {
-					try{
-						reader.close();
-					}catch (IOException e1){}
+					reader.close();
 				}			
 			
 			
