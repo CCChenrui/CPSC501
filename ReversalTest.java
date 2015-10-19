@@ -1,5 +1,5 @@
 //Author : Chenrui Hu
-<<<<<<< HEAD
+
 import static org.junit.Assert.*;
 import java.io.*;
 import java.util.Scanner;
@@ -23,29 +23,37 @@ public class ReversalTest {
 	@BeforeClass //Open the File
 	
 	@AfterClass //Close the File
->>>>>>> 05e9e30162f201986ce9b6ca936d9206d2d062a8
+
 	
 	
 	@Test
 	public void test() {
-<<<<<<< HEAD
+
 		try{
-			File Inputfile = folder.newFile("TestCase1Input.txt");
+			File Inputfile  = folder.newFile("TestCase1Input.txt");
 			File Outputfile = folder.newFile("TestCase1Output.txt");
+			
+			PrintWriter writer = new PrintWriter(Inputfile);
+			
+			writer.println("My name is CHenrui.");
+			writer.close();
+			
 			
 			Reversal.reverseFile(Inputfile, Outputfile);
 			
 			Scanner scan = new Scanner(Outputfile);
 
-			int line=0;
+		    String Expected= "CHenrui. is name My";
 			
+		    String Actual = scan.nextLine();
+		    
+		    assertEquals("",Expected,Actual);
 			
 		} catch (IOException e){
 			fail("No exception should be thrown");
 		}
-=======
-		File actual =  
->>>>>>> 05e9e30162f201986ce9b6ca936d9206d2d062a8
+
+
 	}
 
 	
