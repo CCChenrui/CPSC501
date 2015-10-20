@@ -11,9 +11,8 @@ public class Reversal {
 		Scanner reader ;
 		reader = new Scanner (input);
 		BufferedWriter writer = null;
-		FileOutputStream fos = null;		
-		fos = new FileOutputStream(output);
-		writer = new BufferedWriter(new OutputStreamWriter(fos));
+			
+		
 		// Open File and read strings			
 			String tempString = null;
 			
@@ -29,6 +28,10 @@ public class Reversal {
 		// I save the file as lines,
 		// and go through the line from end to begin from letter to letter (as char size),
 		// store every word as reverse and separate words by space.
+		try{	
+			FileOutputStream fos = null;			
+			fos = new FileOutputStream(output);
+			writer = new BufferedWriter(new OutputStreamWriter(fos));
 		for (int i=str.size()-1; i>=0; i--){
 			String line=(String)str.get(i);
 			char allline[]=line.toCharArray();
@@ -41,7 +44,7 @@ public class Reversal {
 					if (allline[j] !=' '){
 						eachword += allline[j];
 					}
-					else if (eachword!=""){
+					else {
 						wordlist.add(eachword);
 						eachword="";
 					}				
@@ -73,11 +76,9 @@ public class Reversal {
 					}
 				// switch lines after output one line
 					writer.newLine();
-				}		
-			
-					
-	}
-		writer.close();
-   }
-	
+				}							
+		}
+	writer.close();
+	}catch(Exception e){ e.printStackTrace();}
+    }	
 }

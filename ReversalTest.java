@@ -161,7 +161,7 @@ public class ReversalTest {
 
 	}
 	
-	@Test // long lines, empty lines and short lines
+	@Test // Test empty file
 	public void test5() throws IOException {
 		
 
@@ -175,17 +175,31 @@ public class ReversalTest {
 			writer.close();
 						
 			Reversal.reverseFile(Inputfile, Outputfile);
-						
+			
 			Scanner scan = new Scanner(Outputfile);
-
-		    String Expected=null;
-		    String Actual = null;
-		    if (scan.hasNextLine()){
-		    	Actual = scan.nextLine();	
-		    }
-		    assertEquals("",Expected,Actual);
-		   
-		    scan.close();
-
+			assertTrue("", Inputfile.exists());
+			assertFalse("",scan.hasNext());
+			scan.close();
 	}	
+	
+	@Test //catch error
+	public void testerror() throws IOException {
+		
+		File Inputfile  = new File("TestCaseInput.txt");
+		File Outputfile = null; //= new File("TestCaseOutput.txt");
+		
+		PrintWriter writer = new PrintWriter(Inputfile);	
+		writer.println("");
+
+		writer.close();
+					
+		Reversal.reverseFile(Inputfile, Outputfile);
+		
+	}
+	
+	
+	@Test // Reversal Class
+	public void testclass() throws IOException {
+		new Reversal();
+	}
 }
