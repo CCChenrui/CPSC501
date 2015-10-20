@@ -5,11 +5,12 @@ import java.io.*;
 import java.util.Scanner;
 import org.junit.Test;
 
-// there will be 4 different kinds of cases in ReversalTest
+// there will be 5 different kinds of cases in ReversalTest
 // normal lines
 // short lines, empty lines and long lines
 // long lines, empty lines and short lines
 // empty lines, normal lines, empty lines, normal lines and empty lines
+// empty lines
 
 
 public class ReversalTest {
@@ -155,6 +156,34 @@ public class ReversalTest {
 		    Actual = scan.nextLine();		    		    
 		    assertEquals("",Expected,Actual);
 		    
+		   
+		    scan.close();
+
+	}
+	
+	@Test // long lines, empty lines and short lines
+	public void test5() throws IOException {
+		
+
+			File Inputfile  = new File("TestCaseInput.txt");
+			File Outputfile = new File("TestCaseOutput.txt");
+			
+			PrintWriter writer = new PrintWriter(Inputfile);		
+			writer.println("");
+			writer.println("");
+			writer.println("");
+			writer.close();
+						
+			Reversal.reverseFile(Inputfile, Outputfile);
+						
+			Scanner scan = new Scanner(Outputfile);
+
+		    String Expected=null;
+		    String Actual = null;
+		    if (scan.hasNextLine()){
+		    	Actual = scan.nextLine();	
+		    }
+		    assertEquals("",Expected,Actual);
 		   
 		    scan.close();
 
